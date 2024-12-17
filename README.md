@@ -19,3 +19,6 @@ flutter run -d chrome --web-renderer html
 
 <!-- When deployment -->
 flutter build web --release --base-href "/"
+
+mv build/web/* .
+rm -rf build
