@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:portfolio_website/utils/scroll_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatelessWidget {
+  const Footer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
-          padding: EdgeInsets.fromLTRB(0, 70, 0, 50),
+          padding: const EdgeInsets.fromLTRB(0, 70, 0, 50),
           color: Colors.black,
-          child: Column(
+          child: const Column(
             children: [
               SocialLinks(),
               SizedBox(height: 30),
@@ -20,13 +21,15 @@ class Footer extends StatelessWidget {
             ],
           ),
         ),
-        ScrollToTopButton(),
+        const ScrollToTopButton(),
       ],
     );
   }
 }
 
 class ScrollToTopButton extends StatefulWidget {
+  const ScrollToTopButton({super.key});
+
   @override
   State<ScrollToTopButton> createState() => _ScrollToTopButtonState();
 }
@@ -45,7 +48,7 @@ class _ScrollToTopButtonState extends State<ScrollToTopButton> {
         child: GestureDetector(
           onTap: () => ScrollHelper.scrollToTop(context),
           child: AnimatedContainer(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             height: 57,
             width: 57,
             decoration: BoxDecoration(
@@ -59,7 +62,7 @@ class _ScrollToTopButtonState extends State<ScrollToTopButton> {
                 ),
               ],
             ),
-           child: Center(
+            child: Center(
               child: SvgPicture.asset(
                 'assets/images/arrow.svg',
                 height: 42,
@@ -73,27 +76,28 @@ class _ScrollToTopButtonState extends State<ScrollToTopButton> {
   }
 }
 
+class SocialLinks extends StatefulWidget {
+  const SocialLinks({super.key});
 
+  @override
+  State<SocialLinks> createState() => _SocialLinksState();
+}
 
-
-
-
-
-class SocialLinks extends StatelessWidget {
+class _SocialLinksState extends State<SocialLinks> {
   final List<SocialLinkData> socialLinks = [
-    SocialLinkData(
+    const SocialLinkData(
       icon: 'assets/images/social_icons/logo-twitter.svg',
       url: 'https://twitter.com/abubakrshykh',
     ),
-    SocialLinkData(
-      icon: 'assets/images/social icons/logo-github.svg',
+    const SocialLinkData(
+      icon: 'assets/images/social_icons/logo-github.svg',
       url: 'https://github.com/Abubakarshaikh',
     ),
-    SocialLinkData(
+    const SocialLinkData(
       icon: 'assets/images/social_icons/logo-linkedin.svg',
       url: 'https://www.linkedin.com/in/shaikhabubakar/',
     ),
-    SocialLinkData(
+    const SocialLinkData(
       icon: 'assets/images/social_icons/logo-youtube.svg',
       url: 'https://www.youtube.com/@AbubakarShaikh',
     ),
@@ -105,7 +109,7 @@ class SocialLinks extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: socialLinks.map((link) {
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: SocialIcon(data: link),
         );
       }).toList(),
@@ -116,7 +120,7 @@ class SocialLinks extends StatelessWidget {
 class SocialIcon extends StatefulWidget {
   final SocialLinkData data;
 
-  const SocialIcon({required this.data});
+  const SocialIcon({super.key, required this.data});
 
   @override
   State<SocialIcon> createState() => _SocialIconState();
@@ -139,7 +143,7 @@ class _SocialIconState extends State<SocialIcon> {
       child: GestureDetector(
         onTap: _launchURL,
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 200),
           transform: Matrix4.identity()..scale(isHovered ? 1.2 : 1.0),
           child: SvgPicture.asset(
             widget.data.icon,
@@ -154,13 +158,15 @@ class _SocialIconState extends State<SocialIcon> {
 }
 
 class Copyright extends StatelessWidget {
+  const Copyright({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Text(
       '© 2023. Crafted within Karachi by Abubakar',
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-        color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
-      ),
+            color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
+          ),
     );
   }
 }
@@ -174,4 +180,3 @@ class SocialLinkData {
     required this.url,
   });
 }
-

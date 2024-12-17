@@ -140,7 +140,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
               SliverToBoxAdapter(
                 child: ContactSection(key: sectionKeys['contact']),
               ),
-              SliverToBoxAdapter(child: Footer()),
+              const SliverToBoxAdapter(child: Footer()),
             ],
           ),
           if (showScrollToTop)
