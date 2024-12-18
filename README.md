@@ -20,6 +20,8 @@ flutter run -d chrome --web-renderer html
 <!-- When deployment -->
 flutter build web --release --base-href "/"
 
+flutter build web --web-renderer canvaskit --release
+
 mv build/web/* .
 rm -rf build
 
